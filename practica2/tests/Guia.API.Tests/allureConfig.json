@@ -1,0 +1,7 @@
+{
+  "$schema": "https://raw.githubusercontent.com/allure-framework/allure-csharp/master/Allure.Net.Commons/Schemas/allureConfig.schema.json",
+  "allure": {
+    "directory": "allure-results",
+    "title": "Guia.API Unit Tests"
+  }
+}
