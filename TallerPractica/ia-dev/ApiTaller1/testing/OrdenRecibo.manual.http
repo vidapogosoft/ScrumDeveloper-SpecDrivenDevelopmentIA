@@ -1,0 +1,75 @@
+@host = http://localhost:5063
+
+### OR-001 - Lista de ordenes revisadas
+GET {{host}}/api/OrdenRecibo/ORRevisadas
+Accept: application/json
+
+### OR-010 - Orden por numero existente
+GET {{host}}/api/OrdenRecibo/ByNumero/OR-1001
+Accept: application/json
+
+### OR-011 - Orden por numero no existente
+GET {{host}}/api/OrdenRecibo/ByNumero/OR-9999
+Accept: application/json
+
+### OR-020 - Productos revisados (todos)
+GET {{host}}/api/OrdenRecibo/ORProductosRevisados
+Accept: application/json
+
+### OR-030 - Productos revisados por orden/id validos
+GET {{host}}/api/OrdenRecibo/ORProductosRevisados/OR-1001/1
+Accept: application/json
+
+### OR-031 - Productos revisados por orden/id sin match
+GET {{host}}/api/OrdenRecibo/ORProductosRevisados/OR-1001/999
+Accept: application/json
+
+### OR-032 - idorden invalido (esperado 400)
+GET {{host}}/api/OrdenRecibo/ORProductosRevisados/OR-1001/abc
+Accept: application/json
+
+### OR-040 - Productos SP (todos)
+GET {{host}}/api/OrdenRecibo/ORProductosRevisadosSP
+Accept: application/json
+
+### OR-050 - Productos SP por numero existente
+GET {{host}}/api/OrdenRecibo/ORProductosRevisadosSP/OR-1001
+Accept: application/json
+
+### OR-051 - Productos SP por numero sin match
+GET {{host}}/api/OrdenRecibo/ORProductosRevisadosSP/OR-9999
+Accept: application/json
+
+### OR-052 - NumRecibo con caracteres especiales
+GET {{host}}/api/OrdenRecibo/ORProductosRevisadosSP/' OR 1=1
+Accept: application/json
+
+### OR-060 - POST baseline (metodo placeholder)
+POST {{host}}/api/OrdenRecibo
+Content-Type: application/json
+
+"texto de prueba"
+
+### OR-061 - POST sin body
+POST {{host}}/api/OrdenRecibo
+Content-Type: application/json
+
+### OR-070 - PUT baseline (metodo placeholder)
+PUT {{host}}/api/OrdenRecibo/1
+Content-Type: application/json
+
+"actualizacion de prueba"
+
+### OR-071 - PUT con ruta invalida (id no entero)
+PUT {{host}}/api/OrdenRecibo/abc
+Content-Type: application/json
+
+"actualizacion de prueba"
+
+### OR-080 - DELETE baseline (metodo placeholder)
+DELETE {{host}}/api/OrdenRecibo/1
+Accept: application/json
+
+### OR-081 - DELETE con ruta invalida (id no entero)
+DELETE {{host}}/api/OrdenRecibo/abc
+Accept: application/json

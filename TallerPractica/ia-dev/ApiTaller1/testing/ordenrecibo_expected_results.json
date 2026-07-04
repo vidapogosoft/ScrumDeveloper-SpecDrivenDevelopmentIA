@@ -1,0 +1,96 @@
+{
+  "environment": "Testing",
+  "baseUrl": "http://localhost:5063",
+  "cases": [
+    {
+      "id": "OR-001",
+      "endpoint": "GET /api/OrdenRecibo/ORRevisadas",
+      "expectedStatus": 200,
+      "expectedBody": "array_non_empty"
+    },
+    {
+      "id": "OR-002",
+      "endpoint": "GET /api/OrdenRecibo/ORRevisadas",
+      "expectedStatus": 200,
+      "expectedBody": "array_items_have_minimum_fields"
+    },
+    {
+      "id": "OR-010",
+      "endpoint": "GET /api/OrdenRecibo/ByNumero/OR-1001",
+      "expectedStatus": 200,
+      "expectedBody": "object_with_NumOrdenRecibo_OR-1001"
+    },
+    {
+      "id": "OR-011",
+      "endpoint": "GET /api/OrdenRecibo/ByNumero/OR-9999",
+      "expectedStatus": [200, 204],
+      "expectedBody": "null_or_empty"
+    },
+    {
+      "id": "OR-012",
+      "endpoint": "GET /api/OrdenRecibo/ByNumero/or-1001",
+      "expectedStatus": 200,
+      "expectedBody": "object_with_NumOrdenRecibo_OR-1001"
+    },
+    {
+      "id": "OR-020",
+      "endpoint": "GET /api/OrdenRecibo/ORProductosRevisados",
+      "expectedStatus": 200,
+      "expectedBody": "array_non_empty"
+    },
+    {
+      "id": "OR-021",
+      "endpoint": "GET /api/OrdenRecibo/ORProductosRevisados",
+      "expectedStatus": 200,
+      "expectedBody": "array_items_have_key_product_fields"
+    },
+    {
+      "id": "OR-030",
+      "endpoint": "GET /api/OrdenRecibo/ORProductosRevisados/OR-1001/1",
+      "expectedStatus": 200,
+      "expectedBody": "array_non_empty_filtered_by_numero_and_id"
+    },
+    {
+      "id": "OR-031",
+      "endpoint": "GET /api/OrdenRecibo/ORProductosRevisados/OR-1001/999",
+      "expectedStatus": 200,
+      "expectedBody": "empty_array"
+    },
+    {
+      "id": "OR-032",
+      "endpoint": "GET /api/OrdenRecibo/ORProductosRevisados/OR-1001/abc",
+      "expectedStatus": 400,
+      "expectedBody": "validation_problem_details"
+    },
+    {
+      "id": "OR-040",
+      "endpoint": "GET /api/OrdenRecibo/ORProductosRevisadosSP",
+      "expectedStatus": 200,
+      "expectedBody": "array_non_empty"
+    },
+    {
+      "id": "OR-041",
+      "endpoint": "GET /api/OrdenRecibo/ORProductosRevisadosSP/OR-1001",
+      "expectedStatus": 200,
+      "expectedBody": "array_non_empty"
+    },
+    {
+      "id": "OR-042",
+      "endpoint": "GET /api/OrdenRecibo/ORProductosRevisadosSP/OR-9999",
+      "expectedStatus": 200,
+      "expectedBody": "empty_array"
+    },
+    {
+      "id": "OR-043",
+      "endpoint": "GET /api/OrdenRecibo/ORProductosRevisadosSP/' OR 1=1",
+      "expectedStatus": [200, 400],
+      "expectedBody": "controlled_response_no_5xx"
+    },
+    {
+      "id": "OR-044",
+      "endpoint": "GET /api/OrdenRecibo/ORProductosRevisadosSP/or-1001",
+      "expectedStatus": 200,
+      "expectedBody": "array_non_empty_case_insensitive"
+    }
+  ]
+}
